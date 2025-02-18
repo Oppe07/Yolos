@@ -1,0 +1,11 @@
+# segmentation_data.yaml
+
+path: D:\Imagenes\Etiqueta_simple2clases\YOLODataset
+train: D:\Imagenes\Etiqueta_simple2clases\YOLODataset\images\test
+val: D:\Imagenes\Etiqueta_simple2clases\YOLODataset\images\train
+test: D:\Imagenes\Etiqueta_simple2clases/YOLODataset/images/val
+
+# Especifica las clases que tienes en el dataset
+names: 
+  0: linea
+  1: Entrelinea

@@ -1,0 +1,32 @@
+from ultralytics import YOLO 
+import torch 
+
+# Cargar el modelo YOLOv8 en modo de segmentación
+model = YOLO('yolov8n-seg.pt')  # Puedes cambiar 'n' por otros tamaños: s, m, l, x
+
+# Mostrar el dispositivo que está utilizando
+print("Dispositivo utilizado para el entrenamiento:", model.device)
+
+# Verificar si CUDA está disponible
+print("CUDA disponible:", torch.cuda.is_available())
+
+# Entrenar el modelo
+if __name__ == "__main__":
+    # Asegura compatibilidad con PyTorch en Windows
+    torch.multiprocessing.set_start_method('spawn', force=True)
+
+    # Configuración de entrenamiento
+    model.train(
+        data=r'D:/Imagenes/Etiqueta_estrecha/YOLODataset/linea.yaml',  # Ruta del archivo YAML
+        epochs=100,
+        imgsz=640,
+        batch=8,
+        name='segmentation_model',
+        device='cuda',  # Usar GPU si está disponible
+        project=r'D:/Imagenes/Etiqueta_estrecha/runs',
+        workers=0  # Configura 0 workers para evitar problemas de subprocesos en Windows
+    )
+
+
+
+
